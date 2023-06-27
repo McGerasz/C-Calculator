@@ -45,10 +45,20 @@ void div(){
     if((int)answer == answer) printf("The fraction of the provided numbers is: %d", (int)answer);
     else printf("The fraction of the provided numbers is: %.2f", answer);
 }
+void mod(){
+    int firstNum;
+    printf("Enter the first number: ");
+    scanf("%d", &firstNum);
+    int secondNum;
+    printf("\nEnter the second number: ");
+    scanf("%d", &secondNum);
+    int answer = firstNum % secondNum;
+    printf("The modulus of the provided numbers is: %d", answer);
+}
 void inputHandler(){
     printf("Enter the desired operation:\n");
     char operation[4];
-    const char list[] = "The currently valid inputs are: sum|+, subt|-, mult|*, div|/\n";
+    const char list[] = "The currently valid inputs are: sum|+, subt|-, mult|*, div|/, mod|%\n";
     scanf("%s", operation);
     if(strstr(operation, "list")) {
         printf("%s", list);
@@ -58,6 +68,7 @@ void inputHandler(){
     else if(strstr(operation, "subt")|| strstr(operation, "-")) subt();
     else if(strstr(operation, "mult")|| strstr(operation, "*")) mult();
     else if(strstr(operation, "div") || strstr(operation, "/")) div();
+    else if(strstr(operation, "mod") || strstr(operation, "%")) mod();
     else {
         printf("Invalid input!\n");
         inputHandler();
