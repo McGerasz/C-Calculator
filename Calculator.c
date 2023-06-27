@@ -76,7 +76,7 @@ void sgn(){
     printf("Enter the number: ");
     scanf("%s", input);
     if(strstr(input, "prev")) num = (float)prevAns;
-    else num = atof(input); //did this to awoid warnings
+    else num = atof(input);
     printf("The sign of your number is ");
     if(num > 0) {
         printf("1\n");
@@ -133,7 +133,7 @@ void inputHandler(){
     char input;
     scanf(" %c", &input);
     if(input == 'y') {
-        printf("\nTo use the previously calculated value use the word \"prev\" as the first number\n");
+        printf("\nTo use the previously calculated value use the word \"prev\"\n");
         inputHandler();
     }
 
