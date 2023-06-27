@@ -68,8 +68,11 @@ void localPow(){
 }
 void sgn(){
     float num;
+    char input[30];
     printf("Enter the number: ");
-    scanf("%f", &num);
+    scanf("%s", input);
+    if(strstr(input, "prev")/* && &prevAns != NULL*/) num = (int)prevAns;
+    else num = (int)atof(input); //did this to awoid warnings
     printf("The sign of your number is ");
     if(num > 0) {
         printf("1\n");
