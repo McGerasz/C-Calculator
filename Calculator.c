@@ -51,11 +51,13 @@ void mod(){
     char input[30];
     printf("Enter the first number: ");
     scanf("%s", input);
-    if(strstr(input, "prev")/* && &prevAns != NULL*/) firstNum = (int)prevAns;
+    if(strstr(input, "prev")) firstNum = (int)prevAns;
     else firstNum = (int)atof(input); //did this to awoid warnings
     int secondNum;
     printf("\nEnter the second number: ");
-    scanf("%d", &secondNum);
+    scanf("%s", input);
+    if(strstr(input, "prev")) secondNum = (int)prevAns;
+    else secondNum = (int)atof(input);
     int answer = firstNum % secondNum;
     printf("The modulus of the provided numbers is: %d", answer);
     prevAns = (double) answer;
@@ -73,8 +75,8 @@ void sgn(){
     char input[30];
     printf("Enter the number: ");
     scanf("%s", input);
-    if(strstr(input, "prev")/* && &prevAns != NULL*/) num = (int)prevAns;
-    else num = (int)atof(input); //did this to awoid warnings
+    if(strstr(input, "prev")) num = (float)prevAns;
+    else num = atof(input); //did this to awoid warnings
     printf("The sign of your number is ");
     if(num > 0) {
         printf("1\n");
