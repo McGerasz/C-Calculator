@@ -54,10 +54,19 @@ void localPow(){
     if((int)answer == answer) printf("The power of the provided numbers is: %d", (int)answer);
     else printf("The power of the provided numbers is: %.2lf", answer);
 }
+void sgn(){
+    float num;
+    printf("Enter the number: ");
+    scanf("%f", &num);
+    printf("The sign of your number is ");
+    if(num > 0) printf("1\n");
+    else if(num < 0) printf("-1\n");
+    else printf("0\n");
+}
 void inputHandler(){
     printf("Enter the desired operation:\n");
     char operation[4];
-    const char list[] = "The currently valid inputs are: sum|+, subt|-, mult|*, div|/, mod|%, pow|^\n";
+    const char list[] = "Currently the valid inputs are: sum|+, subt|-, mult|*, div|/, mod|%, pow|^, sign|sgn\n";
     scanf("%s", operation);
     if(strstr(operation, "list")) {
         printf("%s", list);
@@ -69,6 +78,7 @@ void inputHandler(){
     else if(strstr(operation, "div") || strstr(operation, "/")) div();
     else if(strstr(operation, "mod") || strstr(operation, "%")) mod();
     else if(strstr(operation, "pow") || strstr(operation, "^")) localPow();
+    else if(strstr(operation, "sign") || strstr(operation, "sgn")) sgn();
     else {
         printf("Invalid input!\n");
         inputHandler();
