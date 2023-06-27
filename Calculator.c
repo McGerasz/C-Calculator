@@ -121,6 +121,8 @@ int main(){
     printf("Welcome to My Calculator!\n");
     printf("If you would like to see a list of options enter \"list\"\n");
     inputHandler();
-    printf("Thank You for using My calculator!");
+    printf("Thank You for using My calculator!\n");
+    getchar();
+    getchar();
     return 0;
 }
