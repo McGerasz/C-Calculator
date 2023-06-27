@@ -10,7 +10,9 @@ void floatInput(float *firstNum, float *secondNum){
     if(strstr(input, "prev")/* && &prevAns != NULL*/) *firstNum = (float)prevAns;
     else *firstNum = atof(input);
     printf("\nEnter the second number: ");
-    scanf("%f", secondNum);
+    scanf("%s", input);
+    if(strstr(input, "prev")/* && &prevAns != NULL*/) *secondNum = (float)prevAns;
+    else *secondNum = atof(input);
 }
 void sum(){
     float firstNum, secondNum;
@@ -87,10 +89,25 @@ void sgn(){
         prevAns = 0;
     }
 }
+void localSin(){
+    char input1[30];
+    printf("What type of input do you want to give? [rad/deg] ");
+    scanf("%s", input1);
+    char input2[30];
+    float num;
+    printf("\nEnter your number: ");
+    scanf("%s", input2);
+    if(strstr(input2, "prev")) num = (float)prevAns;
+    else num = atof(input2);
+    if(strstr(input1, "deg")) num = num/180*acosl(-1);
+    double answer = sin(num);
+    printf("The sin of the provided number is: %f", answer);
+    prevAns = answer;
+}
 void inputHandler(){
     printf("Enter the desired operation:\n");
     char operation[4];
-    const char list[] = "Currently the valid inputs are: sum|+, subt|-, mult|*, div|/, mod|%, pow|^, sign|sgn\n";
+    const char list[] = "Currently the valid inputs are: sum|+, subt|-, mult|*, div|/, mod|%, pow|^, sign|sgn, sin|sn\n";
     scanf("%s", operation);
     if(strstr(operation, "list")) {
         printf("%s", list);
@@ -104,6 +121,7 @@ void inputHandler(){
     else if(strstr(operation, "mod") || strstr(operation, "%")) mod();
     else if(strstr(operation, "pow") || strstr(operation, "^")) localPow();
     else if(strstr(operation, "sign") || strstr(operation, "sgn")) sgn();
+    else if(strstr(operation, "sin") || strstr(operation, "sn")) localSin();
     else {
         printf("Invalid input!\n");
         inputHandler();
