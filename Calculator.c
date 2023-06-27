@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
+
+
 void floatInput(float *firstNum, float *secondNum){
     printf("Enter the first number: ");
     scanf("%f", firstNum);
@@ -44,10 +47,17 @@ void mod(){
     int answer = firstNum % secondNum;
     printf("The modulus of the provided numbers is: %d", answer);
 }
+void localPow(){
+    float firstNum, secondNum;
+    floatInput(&firstNum, &secondNum);
+    double answer = pow(firstNum, secondNum);
+    if((int)answer == answer) printf("The power of the provided numbers is: %d", (int)answer);
+    else printf("The power of the provided numbers is: %.2lf", answer);
+}
 void inputHandler(){
     printf("Enter the desired operation:\n");
     char operation[4];
-    const char list[] = "The currently valid inputs are: sum|+, subt|-, mult|*, div|/, mod|%\n";
+    const char list[] = "The currently valid inputs are: sum|+, subt|-, mult|*, div|/, mod|%, pow|^\n";
     scanf("%s", operation);
     if(strstr(operation, "list")) {
         printf("%s", list);
@@ -58,6 +68,7 @@ void inputHandler(){
     else if(strstr(operation, "mult")|| strstr(operation, "*")) mult();
     else if(strstr(operation, "div") || strstr(operation, "/")) div();
     else if(strstr(operation, "mod") || strstr(operation, "%")) mod();
+    else if(strstr(operation, "pow") || strstr(operation, "^")) localPow();
     else {
         printf("Invalid input!\n");
         inputHandler();
