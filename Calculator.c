@@ -71,6 +71,7 @@ void inputHandler(){
     if(strstr(operation, "list")) {
         printf("%s", list);
         inputHandler();
+        return;
     }
     else if(strstr(operation, "sum") || strstr(operation, "+")) sum();
     else if(strstr(operation, "subt")|| strstr(operation, "-")) subt();
@@ -83,11 +84,16 @@ void inputHandler(){
         printf("Invalid input!\n");
         inputHandler();
     }
+    printf("\nWould you like to calculate again? [y/n] ");
+    char input;
+    scanf(" %c", &input);
+    if(input == 'y') inputHandler();
 
 }
 int main(){
     printf("Welcome to My Calculator!\n");
     printf("If you would like to see a list of options enter \"list\"\n");
     inputHandler();
+    printf("Thank You for using My calculator!");
     return 0;
 }
