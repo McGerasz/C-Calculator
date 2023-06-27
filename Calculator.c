@@ -125,6 +125,7 @@ void inputHandler(){
     else {
         printf("Invalid input!\n");
         inputHandler();
+        return;
     }
     printf("\nWould you like to calculate again? [y/n] ");
     char input;
